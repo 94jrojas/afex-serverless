@@ -19,6 +19,9 @@ export const StudentSchema = new Schema({
   grade: {
     type: String,
   },
+  level: {
+    type: String,
+  },
   section: {
     type: String,
   },

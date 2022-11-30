@@ -25,20 +25,20 @@ async function createExpressApp(
 async function bootstrap(): Promise<Server> {
   const expressApp = express();
   const app = await createExpressApp(expressApp);
+  app.enableCors();
+  app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
     .setTitle('AFEX API')
     .setDescription('Test students API serverless')
     .setVersion('1.0')
     .addTag('students')
+    .addServer('http://localhost:3000/dev')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('documentation', app, document);
 
-  app.enableCors();
-  app.useGlobalPipes(new ValidationPipe());
   await app.init();
-
   return createServer(expressApp);
 }
 
