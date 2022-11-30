@@ -8,7 +8,7 @@ This app is for AFEX company.
 
 ## Requirements
 
-- [NodeJs](https://nodejs.org/) v14.x.
+- [NodeJs](https://nodejs.org/) v18.
 
 ## Getting started
 
@@ -16,7 +16,7 @@ This app is for AFEX company.
 # install global serverless
 $ npm install -g serverless
 
-# install nestjs cli
+# install global nestjs-cli
 $ npm i -g @nestjs/cli
 ```
 
@@ -26,7 +26,17 @@ $ npm i -g @nestjs/cli
 $ npm install
 ```
 
-## Running the app
+## Running the app as serverless
+
+```bash
+# compile app
+$ npm run compile
+
+# run serverless offline
+$ serverless offline start
+```
+
+## Running the app (Requires run dynamoDB at http://localhost:8000)
 
 ```bash
 # development
@@ -51,17 +61,3 @@ $ npm run test:e2e
 # test coverage
 $ npm run test:cov
 ```
-
-## Support
-
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
-
-## Stay in touch
-
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
-
-## License
-
-Nest is [MIT licensed](LICENSE).
