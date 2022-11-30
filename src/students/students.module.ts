@@ -1,9 +1,14 @@
 import { Module } from '@nestjs/common';
 import { StudentsService } from './students.service';
 import { StudentsController } from './students.controller';
+import { DynamooseModule } from 'nestjs-dynamoose';
+import { StudentSchema } from './schema/student.schema';
 
 @Module({
+  imports: [
+    DynamooseModule.forFeature([{ name: 'User', schema: StudentSchema }]),
+  ],
   controllers: [StudentsController],
-  providers: [StudentsService]
+  providers: [StudentsService],
 })
 export class StudentsModule {}

@@ -10,7 +10,7 @@ functions:
    events:
      - http:
          method: any
-         path: /{any+}     
+         path: /{any+}  
 
 provider: 
     name: aws
@@ -49,12 +49,10 @@ custom:
 
     dynamodb: 
       start: 
-        port: 5000
+        port: 8000
         inMemory: true
         migrate: true
       stages: dev
-    endpoints:
-      dynamodbURL: 'http://localhost:5000'
 
 resources: 
     Resources: 

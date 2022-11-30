@@ -1,4 +1,24 @@
-import { PartialType } from '@nestjs/swagger';
-import { CreateStudentDto } from './create-student.dto';
+import { Min, IsString } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
-export class UpdateStudentDto extends PartialType(CreateStudentDto) {}
+export class UpdateStudentDto {
+  @ApiProperty()
+  @IsString()
+  readonly firstName: string;
+
+  @ApiProperty()
+  @IsString()
+  readonly lastName: string;
+
+  @ApiProperty({ minimum: 0 })
+  @Min(0)
+  readonly age: number;
+
+  @ApiProperty()
+  @IsString()
+  readonly grade: string;
+
+  @ApiProperty()
+  @IsString()
+  readonly section: string;
+}
