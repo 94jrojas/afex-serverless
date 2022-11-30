@@ -6,7 +6,21 @@
 
 This app is for AFEX company.
 
-## Installation
+## Requirements
+
+- Node(https://nodejs.org/) 14.x
+
+## Getting started
+
+```bash
+# install global serverless
+$ npm install -g serverless
+
+# install nestjs cli
+$ npm i -g @nestjs/cli
+```
+
+## Installation app
 
 ```bash
 $ npm install
