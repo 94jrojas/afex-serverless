@@ -8,7 +8,7 @@ This app is for AFEX company.
 
 ## Requirements
 
-- Node(https://nodejs.org/) 14.x
+- [NodeJs](https://nodejs.org/) v14.x.
 
 ## Getting started
 
