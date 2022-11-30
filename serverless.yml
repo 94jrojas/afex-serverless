@@ -9,11 +9,8 @@ functions:
    handler: dist/serverless.handler
    events:
      - http:
-         method: ANY
-         path: /             
-     - http:
-         method: ANY
-         path: '{proxy+}'
+         method: any
+         path: /{any+}     
 
 provider: 
     name: aws
@@ -55,8 +52,9 @@ custom:
         port: 5000
         inMemory: true
         migrate: true
-
       stages: dev
+    endpoints:
+      dynamodbURL: 'http://localhost:5000'
 
 resources: 
     Resources: 
