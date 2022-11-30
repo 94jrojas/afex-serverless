@@ -1,8 +1,6 @@
 <p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+  <a href="https://www.afex.cl/" target="blank"><img src="https://www.afex.cl/wp-content/themes/afex/img/logo-afex.svg" width="200" alt="Nest Logo" /></a>
 </p>
-
-
 
 ## Description
 
