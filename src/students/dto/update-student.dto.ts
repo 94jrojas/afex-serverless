@@ -1,21 +1,21 @@
 import { ApiProperty } from '@nestjs/swagger';
 
 export class UpdateStudentDto {
-  @ApiProperty()
+  @ApiProperty({ required: false })
   readonly firstName: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   readonly lastName: string;
 
-  @ApiProperty({ minimum: 0 })
+  @ApiProperty({ required: false, minimum: 0 })
   readonly age: number;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   readonly grade: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   readonly level: string;
 
-  @ApiProperty()
+  @ApiProperty({ required: false })
   readonly section: string;
 }

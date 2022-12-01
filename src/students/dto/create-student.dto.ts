@@ -11,6 +11,7 @@ export class CreateStudentDto {
   readonly lastName: string;
 
   @ApiProperty({ minimum: 0 })
+  @IsNotEmpty()
   @IsPositive()
   readonly age: number;
 
