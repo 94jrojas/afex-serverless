@@ -2,7 +2,8 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AppService {
-  getStatus() {
+  // This function returns status of the API
+  getStatus(): object {
     return { message: 'Service is working.' };
   }
 }

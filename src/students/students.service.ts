@@ -5,6 +5,7 @@ import { StudentModel } from './schema/student.schema';
 
 @Injectable()
 export class StudentsService {
+  // This function creates a new student
   async create(createStudentDto: CreateStudentDto): Promise<any> {
     try {
       const createdStudent = new StudentModel(createStudentDto);
@@ -17,6 +18,7 @@ export class StudentsService {
     }
   }
 
+  // This function finds all students with params
   async findAll(updateStudentDto: UpdateStudentDto = null): Promise<any> {
     try {
       const students = await StudentModel.scan(updateStudentDto).exec();
@@ -28,6 +30,7 @@ export class StudentsService {
     }
   }
 
+  // This function finds a student by id
   async findOne(id: string): Promise<any> {
     try {
       const student = await StudentModel.get(id);
@@ -39,6 +42,7 @@ export class StudentsService {
     }
   }
 
+  // This function updates a student by id
   async update(id: string, updateStudentDto: UpdateStudentDto): Promise<any> {
     try {
       const student = await StudentModel.get(id);
@@ -57,6 +61,7 @@ export class StudentsService {
     }
   }
 
+  // This function removes a student by id
   async remove(id: string): Promise<any> {
     try {
       const student = await StudentModel.get(id);

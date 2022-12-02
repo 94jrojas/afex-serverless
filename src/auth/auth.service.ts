@@ -5,6 +5,7 @@ import { ApiKeysRepository } from './repositories/apikeys.repository';
 export class AuthService {
   constructor(private readonly apiKeysRespository: ApiKeysRepository) {}
 
+  // This function validates the API key in repository
   validateApiKey(apiKey: string): boolean {
     const apiKeyEntity = this.apiKeysRespository.findOne(apiKey);
     return !!apiKeyEntity;

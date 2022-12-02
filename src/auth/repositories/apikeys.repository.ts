@@ -18,6 +18,7 @@ export class ApiKeysRepository {
     },
   ];
 
+  // This funtion returns the API key entity if it exists
   public findOne(key: string): ApiKeyEntity {
     return this.keys.find((item) => item.key === key);
   }
