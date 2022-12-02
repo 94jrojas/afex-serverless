@@ -79,7 +79,6 @@ export class StudentsController {
     description: 'The first name of the student.',
   })
   findAll(@Query() updateStudentDto: UpdateStudentDto) {
-    console.log('query', updateStudentDto);
     return this.studentsService.findAll(updateStudentDto);
   }
 
