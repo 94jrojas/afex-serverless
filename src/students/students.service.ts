@@ -5,7 +5,7 @@ import { StudentModel } from './schema/student.schema';
 
 @Injectable()
 export class StudentsService {
-  async create(createStudentDto: CreateStudentDto) {
+  async create(createStudentDto: CreateStudentDto): Promise<any> {
     try {
       const createdStudent = new StudentModel(createStudentDto);
       const savedStudent = await createdStudent.save();
@@ -17,7 +17,7 @@ export class StudentsService {
     }
   }
 
-  async findAll(updateStudentDto: UpdateStudentDto) {
+  async findAll(updateStudentDto: UpdateStudentDto = null): Promise<any> {
     try {
       const students = await StudentModel.scan(updateStudentDto).exec();
       if (!students)
@@ -32,7 +32,7 @@ export class StudentsService {
   //   return this.studentsModel.find(findStudentDto);
   // }
 
-  async findOne(id: string) {
+  async findOne(id: string): Promise<any> {
     try {
       const student = await StudentModel.get(id);
       if (!student)
@@ -43,7 +43,7 @@ export class StudentsService {
     }
   }
 
-  async update(id: string, updateStudentDto: UpdateStudentDto) {
+  async update(id: string, updateStudentDto: UpdateStudentDto): Promise<any> {
     try {
       const student = await StudentModel.get({ id });
       if (!student)
@@ -58,7 +58,7 @@ export class StudentsService {
     }
   }
 
-  async remove(id: string) {
+  async remove(id: string): Promise<any> {
     try {
       const student = await StudentModel.get({ id });
       if (!student)

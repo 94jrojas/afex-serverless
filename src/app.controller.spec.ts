@@ -14,9 +14,11 @@ describe('AppController', () => {
     appController = app.get<AppController>(AppController);
   });
 
-  describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+  describe('findAll', () => {
+    it('Verify that the API is working', async () => {
+      const resultExpected = { message: 'Service is working.' };
+
+      expect(await appController.getStatus()).toEqual(resultExpected);
     });
   });
 });

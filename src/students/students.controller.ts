@@ -19,7 +19,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { ApiKeyGuard } from 'src/auth/guards/apikey.guard';
+import { ApiKeyGuard } from '../auth/guards/apikey.guard';
 
 @ApiBearerAuth()
 @ApiTags('students')
@@ -33,7 +33,7 @@ export class StudentsController {
     status: 201,
     description: 'The student has been successfully created.',
   })
-  create(@Body() createStudentDto: CreateStudentDto) {
+  create(@Body() createStudentDto: CreateStudentDto): Promise<any> {
     return this.studentsService.create(createStudentDto);
   }
 
@@ -78,7 +78,7 @@ export class StudentsController {
     type: String,
     description: 'The first name of the student.',
   })
-  findAll(@Query() updateStudentDto: UpdateStudentDto) {
+  findAll(@Query() updateStudentDto: UpdateStudentDto = null): Promise<any> {
     return this.studentsService.findAll(updateStudentDto);
   }
 
@@ -93,7 +93,7 @@ export class StudentsController {
     status: 200,
     description: 'The student has been successfully retrieved.',
   })
-  findOne(@Param('id') id: string) {
+  findOne(@Param('id') id: string): Promise<any> {
     return this.studentsService.findOne(id);
   }
 
@@ -102,7 +102,10 @@ export class StudentsController {
     status: 200,
     description: 'The student has been successfully updated.',
   })
-  update(@Param('id') id: string, @Body() updateStudentDto: UpdateStudentDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updateStudentDto: UpdateStudentDto,
+  ): Promise<any> {
     return this.studentsService.update(id, updateStudentDto);
   }
 
@@ -111,7 +114,7 @@ export class StudentsController {
     status: 200,
     description: 'The student has been successfully deleted.',
   })
-  remove(@Param('id') id: string) {
+  remove(@Param('id') id: string): Promise<any> {
     return this.studentsService.remove(id);
   }
 }

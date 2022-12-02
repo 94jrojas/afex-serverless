@@ -5,12 +5,16 @@ import { ApiKeyEntity } from '../entities/apikey.entity';
 export class ApiKeysRepository {
   private keys: ApiKeyEntity[] = [
     {
-      name: 'Test Client Key',
+      name: 'Client Key',
       key: 'WTuST68ZHuHWyk8P6tQnntoZJDYv8cdO',
     },
     {
       name: 'Frontend Key',
       key: 'Wlksdjfl56w5f56w546w45f6w8f4w6f',
+    },
+    {
+      name: 'Test key',
+      key: '45sdf8wWDSfsdfbvgsfdgwlljgsfwfq',
     },
   ];
 

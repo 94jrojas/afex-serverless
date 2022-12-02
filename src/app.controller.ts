@@ -11,7 +11,7 @@ export class AppController {
 
   @Get()
   @ApiResponse({ status: 200, description: 'The API is working.' })
-  getHello() {
-    return this.appService.getHello();
+  getStatus() {
+    return this.appService.getStatus();
   }
 }
