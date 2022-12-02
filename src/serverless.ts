@@ -9,6 +9,7 @@ import { createServer, proxy, Response } from 'aws-serverless-express';
 import * as express from 'express';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
+import config from './config';
 
 let cachedServer: Server;
 
@@ -28,15 +29,15 @@ async function bootstrap(): Promise<Server> {
   app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
 
-  const config = new DocumentBuilder()
+  const configSwagger = new DocumentBuilder()
     .addBearerAuth({ name: 'x-api-key', type: 'apiKey', in: 'header' })
     .setTitle('AFEX API')
     .setDescription('Test students API serverless')
     .setVersion('1.0')
     .addTag('students')
-    .addServer('http://localhost:3000/dev')
+    .addServer(config.SERVER_SWAGGER_URL)
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, configSwagger);
   SwaggerModule.setup('documentation', app, document);
 
   await app.init();

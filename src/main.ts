@@ -9,14 +9,14 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  const config = new DocumentBuilder()
+  const configSwagger = new DocumentBuilder()
     .addBearerAuth({ name: 'x-api-key', type: 'apiKey', in: 'header' })
     .setTitle('AFEX API')
     .setDescription('Test students API serverless')
     .setVersion('1.0')
     .addTag('students')
     .build();
-  const document = SwaggerModule.createDocument(app, config);
+  const document = SwaggerModule.createDocument(app, configSwagger);
   SwaggerModule.setup('documentation', app, document);
 
   app.enableCors();
