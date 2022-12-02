@@ -7,6 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   const config = new DocumentBuilder()
+    .addBearerAuth({ name: 'x-api-key', type: 'apiKey', in: 'header' })
     .setTitle('AFEX API')
     .setDescription('Test students API serverless')
     .setVersion('1.0')

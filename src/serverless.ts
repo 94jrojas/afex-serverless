@@ -29,6 +29,7 @@ async function bootstrap(): Promise<Server> {
   app.useGlobalPipes(new ValidationPipe());
 
   const config = new DocumentBuilder()
+    .addBearerAuth({ name: 'x-api-key', type: 'apiKey', in: 'header' })
     .setTitle('AFEX API')
     .setDescription('Test students API serverless')
     .setVersion('1.0')

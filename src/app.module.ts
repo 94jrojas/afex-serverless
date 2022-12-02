@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { StudentsModule } from './students/students.module';
 import { DynamooseModule } from 'nestjs-dynamoose';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { DynamooseModule } from 'nestjs-dynamoose';
       local: true,
     }),
     StudentsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   providers: [AppService],
