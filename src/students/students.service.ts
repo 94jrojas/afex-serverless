@@ -17,9 +17,9 @@ export class StudentsService {
     }
   }
 
-  async findAll() {
+  async findAll(updateStudentDto: UpdateStudentDto) {
     try {
-      const students = await StudentModel.scan().exec();
+      const students = await StudentModel.scan(updateStudentDto).exec();
       if (!students)
         throw new HttpException('No students found', HttpStatus.NOT_FOUND);
       return students;
