@@ -33,6 +33,7 @@ export const StudentSchema = new dynamoose.Schema({
   },
   grade: {
     type: String,
+    index: true,
   },
   level: {
     type: String,
@@ -43,14 +44,18 @@ export const StudentSchema = new dynamoose.Schema({
 });
 
 // Export student model interface
-export const StudentModel = dynamoose.model<Student>('Student', StudentSchema, {
-  create: true, // Create table in DB, if it does not exist,
-  update: true, // Update remote indexes if they do not match local index structure
-  waitForActive: {
-    enabled: true, // Wait for table to be created before trying to use it
-    check: {
-      // Wait up to 20 seconds for table to be created
-      timeout: 20000,
+export const StudentModel = dynamoose.model<Student>(
+  'StudentsTable',
+  StudentSchema,
+  {
+    create: true, // Create table in DB, if it does not exist,
+    // update: true, // Update remote indexes if they do not match local index structure
+    waitForActive: {
+      enabled: true, // Wait for table to be created before trying to use it
+      check: {
+        // Wait up to 20 seconds for table to be created
+        timeout: 20000,
+      },
     },
   },
-});
+);

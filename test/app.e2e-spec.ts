@@ -3,6 +3,8 @@ import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
 
+const apiKey = '45sdf8wWDSfsdfbvgsfdgwlljgsfwfq';
+
 describe('AppController (e2e)', () => {
   let app: INestApplication;
 
@@ -16,9 +18,15 @@ describe('AppController (e2e)', () => {
   });
 
   it('/ (GET)', () => {
+    const resultExpected = { message: 'Service is working.' };
     return request(app.getHttpServer())
       .get('/')
+      .set('x-api-key', apiKey)
       .expect(200)
-      .expect('Hello World!');
+      .expect(resultExpected);
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 });

@@ -6,7 +6,9 @@ import { StudentSchema } from './schema/student.schema';
 
 @Module({
   imports: [
-    DynamooseModule.forFeature([{ name: 'Student', schema: StudentSchema }]),
+    DynamooseModule.forFeature([
+      { name: 'StudentsTable', schema: StudentSchema },
+    ]),
   ],
   controllers: [StudentsController],
   providers: [StudentsService],

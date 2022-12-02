@@ -36,9 +36,12 @@ $ npm run compile
 $ serverless offline start
 ```
 
-## Running the app (Requires run dynamoDB at http://localhost:8000)
+## Running the app (Requires run dynamoDB serverless)
 
 ```bash
+# start dynamoDB in another terminal
+$ serverless dynamodb start
+
 # development
 $ npm run start
 

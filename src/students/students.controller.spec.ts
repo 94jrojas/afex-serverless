@@ -14,6 +14,7 @@ describe('StudentsController', () => {
 
   it('POST /students', async () => {
     const resultExpected = {
+      id: '1',
       firstName: 'John',
       lastName: 'Doe',
       age: 12,
@@ -86,6 +87,7 @@ describe('StudentsController', () => {
       section: 'A',
     };
     const data = {
+      id: '1',
       firstName: 'John',
       lastName: 'Doe',
       age: 12,

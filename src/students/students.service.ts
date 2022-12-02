@@ -28,10 +28,6 @@ export class StudentsService {
     }
   }
 
-  // async find(findStudentDto: CreateStudentDto): Promise<Students[]> {
-  //   return this.studentsModel.find(findStudentDto);
-  // }
-
   async findOne(id: string): Promise<any> {
     try {
       const student = await StudentModel.get(id);
@@ -45,28 +41,34 @@ export class StudentsService {
 
   async update(id: string, updateStudentDto: UpdateStudentDto): Promise<any> {
     try {
-      const student = await StudentModel.get({ id });
-      if (!student)
+      const student = await StudentModel.get(id);
+      if (!student?.id)
         throw new HttpException('Student not found', HttpStatus.NOT_FOUND);
       const editedStudent = Object.assign(student, updateStudentDto);
       const savedStudent = await StudentModel.update(editedStudent);
-      if (!savedStudent)
+      if (!savedStudent?.id)
         throw new HttpException('Student not updated', HttpStatus.BAD_REQUEST);
       return savedStudent;
     } catch (err) {
-      throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        err.message,
+        err.status || HttpStatus.BAD_REQUEST,
+      );
     }
   }
 
   async remove(id: string): Promise<any> {
     try {
-      const student = await StudentModel.get({ id });
-      if (!student)
+      const student = await StudentModel.get(id);
+      if (!student?.id)
         throw new HttpException('Student not found', HttpStatus.NOT_FOUND);
       await StudentModel.delete(id);
       return student;
     } catch (err) {
-      throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
+      throw new HttpException(
+        err.message,
+        err.status || HttpStatus.BAD_REQUEST,
+      );
     }
   }
 }
