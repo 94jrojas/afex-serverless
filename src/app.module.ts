@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { StudentsModule } from './students/students.module';
 import { DynamooseModule } from 'nestjs-dynamoose';
 import { AuthModule } from './auth/auth.module';
+import config from './config';
 
 @Module({
   imports: [
@@ -13,7 +14,7 @@ import { AuthModule } from './auth/auth.module';
         accessKeyId: 'null',
         secretAccessKey: 'null',
       },
-      local: true,
+      local: config.DATABASE_URL,
     }),
     StudentsModule,
     AuthModule,
