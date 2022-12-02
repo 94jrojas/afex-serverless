@@ -29,7 +29,9 @@ async function createExpressApp(
 async function bootstrap(): Promise<Server> {
   const expressApp = express();
   const app = await createExpressApp(expressApp);
-  app.enableCors();
+  app.enableCors({
+    origin: '*',
+  });
   app.useGlobalPipes(new ValidationPipe());
 
   const configSwagger = new DocumentBuilder()
