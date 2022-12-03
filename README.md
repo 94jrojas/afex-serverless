@@ -32,8 +32,8 @@ Run with custom DynamoDB
 ```bash
 # Environments vars
 DYNAMODB_MODE="server"
-KEY_ID="AKIAXR4MIYRFYRER3J6X"
-SECRET_KEY="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"
+KEY_ID="aws key id"
+SECRET_KEY="aws secret key"
 ```
 Run whit DynamoDB local
 ```bash
