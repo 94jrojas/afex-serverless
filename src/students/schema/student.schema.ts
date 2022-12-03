@@ -45,7 +45,7 @@ export const StudentSchema = new dynamoose.Schema({
 
 // Export student model interface
 export const StudentModel = dynamoose.model<Student>(
-  'StudentsTable',
+  'TableStudents',
   StudentSchema,
   {
     create: true, // Create table in DB, if it does not exist,

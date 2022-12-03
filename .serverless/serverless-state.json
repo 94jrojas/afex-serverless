@@ -1,12 +1,13 @@
 {
   "service": {
-    "service": "afex-serverless",
+    "service": "afex-serverless-api",
     "serviceObject": {
-      "name": "afex-serverless"
+      "name": "afex-serverless-api"
     },
     "provider": {
       "name": "aws",
       "runtime": "nodejs14.x",
+      "region": "us-west-2",
       "apiGateway": {
         "shouldStartNameWithService": true
       },
@@ -34,7 +35,6 @@
         }
       },
       "stage": "dev",
-      "region": "us-east-1",
       "versionFunctions": true,
       "compiledCloudFormationTemplate": {
         "AWSTemplateFormatVersion": "2010-09-09",
@@ -112,7 +112,7 @@
           "AppLogGroup": {
             "Type": "AWS::Logs::LogGroup",
             "Properties": {
-              "LogGroupName": "/aws/lambda/afex-serverless-dev-app"
+              "LogGroupName": "/aws/lambda/afex-serverless-api-dev-app"
             }
           },
           "IamRoleLambdaExecution": {
@@ -140,7 +140,7 @@
                     "Fn::Join": [
                       "-",
                       [
-                        "afex-serverless",
+                        "afex-serverless-api",
                         "dev",
                         "lambda"
                       ]
@@ -157,7 +157,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/afex-serverless-dev*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/afex-serverless-api-dev*:*"
                           }
                         ]
                       },
@@ -168,7 +168,7 @@
                         ],
                         "Resource": [
                           {
-                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/afex-serverless-dev*:*:*"
+                            "Fn::Sub": "arn:${AWS::Partition}:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/lambda/afex-serverless-api-dev*:*:*"
                           }
                         ]
                       },
@@ -184,7 +184,7 @@
                 "Fn::Join": [
                   "-",
                   [
-                    "afex-serverless",
+                    "afex-serverless-api",
                     "dev",
                     {
                       "Ref": "AWS::Region"
@@ -202,11 +202,11 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/afex-serverless/dev/1670050260012-2022-12-03T06:51:00.012Z/afex-serverless.zip"
+                "S3Key": "serverless/afex-serverless-api/dev/1670096634417-2022-12-03T19:43:54.417Z/afex-serverless-api.zip"
               },
               "Handler": "dist/serverless.handler",
               "Runtime": "nodejs14.x",
-              "FunctionName": "afex-serverless-dev-app",
+              "FunctionName": "afex-serverless-api-dev-app",
               "MemorySize": 1024,
               "Timeout": 6,
               "Environment": {
@@ -226,20 +226,20 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersionRttOhT0NC5evI4M2xM7TsWm5b2W69Q3GNEbQOYOEw": {
+          "AppLambdaVersionYAMgrsLrDPQvcIYd8evMsg7qS3LT6Ns3M7QLn8NTkJc": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "QooXUp5Dys5iWBY1pqjoZHUm4tgVRrcN23upH4vlD1s="
+              "CodeSha256": "vombfTyXBLrV5nIWxQCuYGRzSdzDTH562GQ0tRxC9OU="
             }
           },
           "HttpApi": {
             "Type": "AWS::ApiGatewayV2::Api",
             "Properties": {
-              "Name": "dev-afex-serverless",
+              "Name": "dev-afex-serverless-api",
               "ProtocolType": "HTTP"
             }
           },
@@ -328,10 +328,10 @@
             },
             "DependsOn": "HttpApiIntegrationApp"
           },
-          "StudentsTable": {
+          "TableStudents": {
             "Type": "AWS::DynamoDB::Table",
             "Properties": {
-              "TableName": "StudentsTable",
+              "TableName": "TableStudents",
               "AttributeDefinitions": [
                 {
                   "AttributeName": "id",
@@ -357,16 +357,16 @@
               "Ref": "ServerlessDeploymentBucket"
             },
             "Export": {
-              "Name": "sls-afex-serverless-dev-ServerlessDeploymentBucketName"
+              "Name": "sls-afex-serverless-api-dev-ServerlessDeploymentBucketName"
             }
           },
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionRttOhT0NC5evI4M2xM7TsWm5b2W69Q3GNEbQOYOEw"
+              "Ref": "AppLambdaVersionYAMgrsLrDPQvcIYd8evMsg7qS3LT6Ns3M7QLn8NTkJc"
             },
             "Export": {
-              "Name": "sls-afex-serverless-dev-AppLambdaFunctionQualifiedArn"
+              "Name": "sls-afex-serverless-api-dev-AppLambdaFunctionQualifiedArn"
             }
           },
           "HttpApiId": {
@@ -375,7 +375,7 @@
               "Ref": "HttpApi"
             },
             "Export": {
-              "Name": "sls-afex-serverless-dev-HttpApiId"
+              "Name": "sls-afex-serverless-api-dev-HttpApiId"
             }
           },
           "HttpApiUrl": {
@@ -400,7 +400,7 @@
               ]
             },
             "Export": {
-              "Name": "sls-afex-serverless-dev-HttpApiUrl"
+              "Name": "sls-afex-serverless-api-dev-HttpApiUrl"
             }
           }
         }
@@ -519,21 +519,21 @@
             "resolvedMethod": "ANY"
           }
         ],
-        "name": "afex-serverless-dev-app",
+        "name": "afex-serverless-api-dev-app",
         "package": {},
         "memory": 1024,
         "timeout": 6,
         "runtime": "nodejs14.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersionRttOhT0NC5evI4M2xM7TsWm5b2W69Q3GNEbQOYOEw"
+        "versionLogicalId": "AppLambdaVersionYAMgrsLrDPQvcIYd8evMsg7qS3LT6Ns3M7QLn8NTkJc"
       }
     },
     "resources": {
       "Resources": {
-        "StudentsTable": {
+        "TableStudents": {
           "Type": "AWS::DynamoDB::Table",
           "Properties": {
-            "TableName": "StudentsTable",
+            "TableName": "TableStudents",
             "AttributeDefinitions": [
               {
                 "AttributeName": "id",
@@ -558,7 +558,7 @@
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
-      "service": "afex-serverless",
+      "service": "afex-serverless-api",
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
       },
@@ -574,10 +574,10 @@
     },
     "layers": {},
     "isDashboardMonitoringPreconfigured": false,
-    "artifact": "C:\\Users\\Mr Boios\\Documents\\DEVELOPER\\NESTJS\\afex-serverless\\.serverless\\afex-serverless.zip"
+    "artifact": "C:\\Users\\Mr Boios\\Documents\\DEVELOPER\\NESTJS\\afex-serverless\\.serverless\\afex-serverless-api.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/afex-serverless/dev/1670050260012-2022-12-03T06:51:00.012Z",
-    "artifact": "afex-serverless.zip"
+    "artifactDirectoryName": "serverless/afex-serverless-api/dev/1670096634417-2022-12-03T19:43:54.417Z",
+    "artifact": "afex-serverless-api.zip"
   }
 }

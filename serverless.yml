@@ -1,8 +1,8 @@
-service: afex-serverless
-plugins:
-  # - serverless-plugin-optimize
-  - serverless-offline
-  - serverless-dynamodb-local
+service: afex-serverless-api
+# plugins:
+#   - serverless-plugin-optimize
+#   - serverless-offline
+#   - serverless-dynamodb-local
 
 functions:
   app: 
@@ -13,6 +13,7 @@ functions:
 provider: 
     name: aws
     runtime: nodejs14.x
+    region: us-west-2
     apiGateway:
       shouldStartNameWithService: true
 
@@ -58,10 +59,10 @@ custom:
 
 resources: 
     Resources: 
-      StudentsTable: 
+      TableStudents: 
         Type: AWS::DynamoDB::Table
         Properties:
-          TableName: StudentsTable
+          TableName: TableStudents
           AttributeDefinitions: 
               - AttributeName: id
                 AttributeType: S
