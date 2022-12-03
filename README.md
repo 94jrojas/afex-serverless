@@ -66,7 +66,6 @@ $ npm run compile
 $ serverless offline start
 ```
 
-
 ## Running the app
 
 ```bash
