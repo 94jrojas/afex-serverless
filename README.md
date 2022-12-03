@@ -26,7 +26,25 @@ $ npm i -g @nestjs/cli
 $ npm install
 ```
 
-## Running the app as serverless (whit custom DynamoDB)
+## Configure DynamoDB (Enviroments var, in file .env)
+
+Run with custom DynamoDB
+```bash
+DYNAMODB_MODE="server"
+KEY_ID="AKIAXR4MIYRFYRER3J6X"
+SECRET_KEY="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"
+```
+Run whit DynamoDB local
+```bash
+DYNAMODB_MODE="local"
+DATABASE_URL="http://localhost:8000"
+```
+Run in aws service (Authentication with "aws configure")
+```bash
+DYNAMODB_MODE="aws"
+```
+
+## Running the app as serverless
 
 ```bash
 # compile app
@@ -36,14 +54,8 @@ $ npm run compile
 $ serverless offline start
 ```
 
-Environment vars
-```bash
-DYNAMODB_MODE="server"
-KEY_ID="AKIAXR4MIYRFYRER3J6X"
-SECRET_KEY="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"
-```
 
-## Running the app (whit DynamoDB local)
+## Running the app
 
 ```bash
 # install dependencies
@@ -64,13 +76,8 @@ $ npm run start:dev
 $ npm run start:prod
 ```
 
-Environment vars
-```bash
-DYNAMODB_MODE="local"
-DATABASE_URL="http://localhost:8000"
-```
-
 ## Test
+To run tests you need to configure DynamoDB (custom or local)
 
 ```bash
 # unit tests
@@ -91,9 +98,4 @@ $ npm run build
 
 # deploy in AWS lambda serverless
 $ npm serverless deploy
-```
-
-Environment vars
-```bash
-DYNAMODB_MODE="aws"
 ```
