@@ -39,7 +39,7 @@ Run whit DynamoDB local
 ```bash
 # Environments vars
 DYNAMODB_MODE="local"
-DATABASE_URL="http://localhost:8000"
+DATABASE_URL="http://localhost:5000"
 
 # install dependencies
 $ serverless plugin install -n serverless-dynamodb-local 
