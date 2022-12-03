@@ -1,16 +1,14 @@
 service: afex-serverless
-plugins:
-  - serverless-plugin-optimize
-  - serverless-offline
-  - serverless-dynamodb-local
+# plugins:
+#   - serverless-plugin-optimize
+#   - serverless-offline
+#   - serverless-dynamodb-local
 
 functions:
- app: 
-   handler: dist/serverless.handler
-   events:
-     - http:
-         method: any
-         path: /{any+}  
+  app: 
+    handler: dist/serverless.handler
+    events:
+      - httpApi: '*'    
 
 provider: 
     name: aws
@@ -36,7 +34,11 @@ provider:
 
               Resource: arn:aws:dynamodb:us-west-2:*:table/StudentsTable
 
-custom: 
+custom:
+
+    # optimize:
+    #     external: ['swagger-ui-dist']
+        
     esbuild: 
       bundle: true
       minify: false
@@ -49,7 +51,7 @@ custom:
 
     dynamodb: 
       start: 
-        port: 8000
+        port: 5000
         inMemory: true
         migrate: true
       stages: dev
@@ -63,11 +65,9 @@ resources:
           AttributeDefinitions: 
               - AttributeName: id
                 AttributeType: S
-
           KeySchema: 
               - AttributeName: id
                 KeyType: HASH
-
           ProvisionedThroughput: 
             ReadCapacityUnits: 1
             WriteCapacityUnits: 1  

@@ -34,6 +34,7 @@
     "class-validator": "^0.13.2",
     "dynamoose": "^3.1.0",
     "express": "^4.18.2",
+    "express-swagger": "^0.0.2",
     "nestjs-dynamoose": "^0.5.0",
     "passport": "^0.6.0",
     "passport-headerapikey": "^1.2.2",

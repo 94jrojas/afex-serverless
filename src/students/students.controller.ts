@@ -33,8 +33,8 @@ export class StudentsController {
     status: 201,
     description: 'The student has been successfully created.',
   })
-  create(@Body() createStudentDto: CreateStudentDto): Promise<any> {
-    return this.studentsService.create(createStudentDto);
+  async create(@Body() createStudentDto: CreateStudentDto): Promise<any> {
+    return await this.studentsService.create(createStudentDto);
   }
 
   @Get()
@@ -78,8 +78,10 @@ export class StudentsController {
     type: String,
     description: 'The first name of the student.',
   })
-  findAll(@Query() updateStudentDto: UpdateStudentDto = null): Promise<any> {
-    return this.studentsService.findAll(updateStudentDto);
+  async findAll(
+    @Query() updateStudentDto: UpdateStudentDto = null,
+  ): Promise<any> {
+    return await this.studentsService.findAll(updateStudentDto);
   }
 
   @Get(':id')
@@ -93,8 +95,8 @@ export class StudentsController {
     status: 200,
     description: 'The student has been successfully retrieved.',
   })
-  findOne(@Param('id') id: string): Promise<any> {
-    return this.studentsService.findOne(id);
+  async findOne(@Param('id') id: string): Promise<any> {
+    return await this.studentsService.findOne(id);
   }
 
   @Patch(':id')
@@ -102,11 +104,11 @@ export class StudentsController {
     status: 200,
     description: 'The student has been successfully updated.',
   })
-  update(
+  async update(
     @Param('id') id: string,
     @Body() updateStudentDto: UpdateStudentDto,
   ): Promise<any> {
-    return this.studentsService.update(id, updateStudentDto);
+    return await this.studentsService.update(id, updateStudentDto);
   }
 
   @Delete(':id')
@@ -114,7 +116,7 @@ export class StudentsController {
     status: 200,
     description: 'The student has been successfully deleted.',
   })
-  remove(@Param('id') id: string): Promise<any> {
-    return this.studentsService.remove(id);
+  async remove(@Param('id') id: string): Promise<any> {
+    return await this.studentsService.remove(id);
   }
 }

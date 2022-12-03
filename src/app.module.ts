@@ -8,14 +8,19 @@ import config from './config';
 
 @Module({
   imports: [
-    DynamooseModule.forRoot({
-      aws: {
-        region: 'local',
-        accessKeyId: 'null',
-        secretAccessKey: 'null',
-      },
-      local: config.DATABASE_URL,
-    }),
+    DynamooseModule.forRoot(
+      config.DYNAMODB_MODE === 'local'
+        ? {
+            local: config.DATABASE_URL,
+          }
+        : {
+            aws: {
+              region: 'us-west-2',
+              accessKeyId: 'AKIAXR4MIYRFYRER3J6X',
+              secretAccessKey: '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',
+            },
+          },
+    ),
     StudentsModule,
     AuthModule,
   ],
