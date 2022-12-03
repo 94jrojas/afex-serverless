@@ -174,7 +174,7 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/afex-serverless/dev/1670047398149-2022-12-03T06:03:18.149Z/afex-serverless.zip"
+          "S3Key": "serverless/afex-serverless/dev/1670049629392-2022-12-03T06:40:29.392Z/afex-serverless.zip"
         },
         "Handler": "dist/serverless.handler",
         "Runtime": "nodejs14.x",
@@ -198,14 +198,14 @@
         "AppLogGroup"
       ]
     },
-    "AppLambdaVersionJGoSWjCK0pFEdXYUECtSl1VhItdYxYcAGHUfHYJ4gI": {
+    "AppLambdaVersionRttOhT0NC5evI4M2xM7TsWm5b2W69Q3GNEbQOYOEw": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "xNa/6PXr06wusbK51DF1WrLVqQ+PmVGhUs6WUPXE3So="
+        "CodeSha256": "QooXUp5Dys5iWBY1pqjoZHUm4tgVRrcN23upH4vlD1s="
       }
     },
     "HttpApi": {
@@ -338,7 +338,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionJGoSWjCK0pFEdXYUECtSl1VhItdYxYcAGHUfHYJ4gI"
+        "Ref": "AppLambdaVersionRttOhT0NC5evI4M2xM7TsWm5b2W69Q3GNEbQOYOEw"
       },
       "Export": {
         "Name": "sls-afex-serverless-dev-AppLambdaFunctionQualifiedArn"

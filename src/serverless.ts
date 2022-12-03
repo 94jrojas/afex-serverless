@@ -25,9 +25,9 @@ async function bootstrap(): Promise<Server> {
     new ExpressAdapter(expressApp),
   );
   const document = SwaggerModule.createDocument(app, swaggerConfig);
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   SwaggerModule.setup('api', app, document);
-
   await app.init();
   return createServer(expressApp);
 }

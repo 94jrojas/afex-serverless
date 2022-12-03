@@ -6,21 +6,20 @@ import { DynamooseModule } from 'nestjs-dynamoose';
 import { AuthModule } from './auth/auth.module';
 import config from './config';
 
+const dynamooseOptions = {
+  ...(config.DYNAMODB_MODE === 'server' && {
+    local: config.DATABASE_URL,
+  }),
+  ...(config.DYNAMODB_MODE === 'server' && {
+    accessKeyId: config.KEY_ID,
+    secretAccessKey: config.SECRET_KEY,
+    region: 'us-wast-2',
+  }),
+};
+
 @Module({
   imports: [
-    DynamooseModule.forRoot(
-      config.DYNAMODB_MODE === 'local'
-        ? {
-            local: config.DATABASE_URL,
-          }
-        : {
-            aws: {
-              region: 'us-west-2',
-              accessKeyId: 'AKIAXR4MIYRFYRER3J6X',
-              secretAccessKey: '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',
-            },
-          },
-    ),
+    DynamooseModule.forRoot(dynamooseOptions),
     StudentsModule,
     AuthModule,
   ],
