@@ -5,6 +5,9 @@ export class AppService {
   // This function returns status of the API
   getStatus(): Promise<any> {
     // Return promise
-    return Promise.resolve({ message: 'Service is working.' });
+    return new Promise((resolve) => {
+      // Resolve promise
+      resolve({ message: 'Service is working.' });
+    });
   }
 }

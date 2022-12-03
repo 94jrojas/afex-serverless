@@ -16,6 +16,7 @@ const swaggerConfig = new DocumentBuilder()
   .setDescription('Test students API serverless')
   .setVersion('1.0')
   .addTag('students')
+  .addServer('/dev')
   .build();
 
 async function bootstrap(): Promise<Server> {
@@ -25,14 +26,14 @@ async function bootstrap(): Promise<Server> {
     new ExpressAdapter(expressApp),
   );
   const document = SwaggerModule.createDocument(app, swaggerConfig);
-  app.enableCors({ origin: '*' });
+  app.enableCors();
   app.useGlobalPipes(new ValidationPipe());
   SwaggerModule.setup('api', app, document);
   await app.init();
   return createServer(expressApp);
 }
 export async function handler(event: any, context: Context): Promise<Response> {
-  event.path = event.rawPath;
+  // event.path = event.rawPath;
   if (!cachedServer) {
     const server = await bootstrap();
     cachedServer = server;
