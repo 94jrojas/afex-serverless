@@ -30,23 +30,35 @@ $ npm install
 
 Run with custom DynamoDB
 ```bash
+# Environments vars
 DYNAMODB_MODE="server"
 KEY_ID="AKIAXR4MIYRFYRER3J6X"
 SECRET_KEY="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"
 ```
 Run whit DynamoDB local
 ```bash
+# Environments vars
 DYNAMODB_MODE="local"
 DATABASE_URL="http://localhost:8000"
+
+# install dependencies
+$ serverless plugin install -n serverless-dynamodb-local 
+$ serverless dynamodb install
+
+# start dynamoDB in another terminal
+$ serverless dynamodb start
 ```
 Run in aws service (Authentication with "aws configure")
 ```bash
+# Environments vars
 DYNAMODB_MODE="aws"
 ```
 
 ## Running the app as serverless
 
 ```bash
+# install dependencies
+$ serverless plugin install -n serverless-offline
 # compile app
 $ npm run compile
 
@@ -58,14 +70,6 @@ $ serverless offline start
 ## Running the app
 
 ```bash
-# install dependencies
-$ serverless plugin install -n serverless-dynamodb-local 
-$ serverless plugin install -n serverless-offline
-$ serverless dynamodb install
-
-# start dynamoDB in another terminal
-$ serverless dynamodb start
-
 # development
 $ npm run start
 
