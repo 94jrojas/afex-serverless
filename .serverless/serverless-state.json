@@ -202,7 +202,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/afex-serverless/dev/1670049629392-2022-12-03T06:40:29.392Z/afex-serverless.zip"
+                "S3Key": "serverless/afex-serverless/dev/1670050260012-2022-12-03T06:51:00.012Z/afex-serverless.zip"
               },
               "Handler": "dist/serverless.handler",
               "Runtime": "nodejs14.x",
@@ -577,7 +577,7 @@
     "artifact": "C:\\Users\\Mr Boios\\Documents\\DEVELOPER\\NESTJS\\afex-serverless\\.serverless\\afex-serverless.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/afex-serverless/dev/1670049629392-2022-12-03T06:40:29.392Z",
+    "artifactDirectoryName": "serverless/afex-serverless/dev/1670050260012-2022-12-03T06:51:00.012Z",
     "artifact": "afex-serverless.zip"
   }
 }
