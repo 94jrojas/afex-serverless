@@ -26,7 +26,7 @@ $ npm i -g @nestjs/cli
 $ npm install
 ```
 
-## Configure DynamoDB (Enviroments var, in file .env)
+## Configure DynamoDB (Enviroments var, in .env file)
 
 Run with custom DynamoDB
 ```bash
