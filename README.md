@@ -102,3 +102,5 @@ $ npm run build
 # deploy in AWS lambda serverless
 $ npm serverless deploy
 ```
+
+### by Jonathan Rojas
